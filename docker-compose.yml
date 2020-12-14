@@ -1,0 +1,23 @@
+version : '3'
+services:
+    flaskapp:
+        build: .
+        ports:
+        - "5000:5000"
+        links:
+        - "postgres:db"
+        environment:
+            POSTGRES_PASSWORD: motdepasse
+            POSTGRES_USER: personnel
+            POSTGRES_DB: database
+        depends_on:
+         - postgres
+    postgres:
+        image: postgres
+        environment:
+            SECRET_KEY: longstringstring
+            POSTGRES_PASSWORD: motdepasse
+            POSTGRES_USER: personnel
+            POSTGRES_DB: database
+            USE_POSTGRES: oui
+ 
